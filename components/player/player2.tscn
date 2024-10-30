@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck73ysx1ns7lp"]
+
+[ext_resource type="Script" path="res://components/player/player_2.gd" id="1_qicjc"]
+[ext_resource type="SpriteFrames" uid="uid://cgp7i5owjqp12" path="res://components/player/spriteframes-blue.tres" id="2_5anmf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7x5a4"]
+radius = 31.0
+height = 92.0
+
+[node name="Player2" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 5
+floor_constant_speed = true
+floor_snap_length = 32.0
+script = ExtResource("1_qicjc")
+
+[node name="DoubleJumpParticles" type="CPUParticles2D" parent="."]
+unique_name_in_owner = true
+emitting = false
+amount = 60
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.54
+randomness = 0.25
+emission_shape = 1
+emission_sphere_radius = 36.72
+particle_flag_align_y = true
+gravity = Vector2(0, 1)
+scale_amount_max = 5.0
+color = Color(1, 1, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -64)
+sprite_frames = ExtResource("2_5anmf")
+animation = &"all"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -46)
+shape = SubResource("CapsuleShape2D_7x5a4")
